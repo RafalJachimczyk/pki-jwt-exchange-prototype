@@ -33,3 +33,8 @@ The JWT microservice contains internal registry of known services.
 The purpose of this prototype is to find a secure way of registering service and
 issue service credentials (PKI certificates) so that they can be exchanged for
 JWT at a later stage.
+
+###Microservice responsibilities:
+- issue JWT 
+- refresh JWT
+- Public Key registry
