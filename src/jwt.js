@@ -3,6 +3,8 @@ const bodyParser = require('body-parser')
 const fs = require('fs');
 const https = require('https');
 const jsonwebtoken = require('jsonwebtoken');
+const jose = require('node-jose');
+
 
 const serviceRepository = require('./repository/serviceRepository');
 
@@ -10,6 +12,11 @@ const key = fs.readFileSync('./pki/server.key');
 const cert = fs.readFileSync('./pki/server.crt');
 const ca = fs.readFileSync('./pki/CA/ca.crt');
 
+var keystore = jose.JWK.createKeyStore();
+keystore.add(cert, 'pem').
+  then((result) => {
+    console.log('Added cert!');
+  })
 
 var options = {
   key,
@@ -53,6 +60,13 @@ app.get('/token', (req, res) => {
   res.send(jwt);
 
 });
+
+app.get('/certs', (req, res) => {
+  console.log('--- GET /certs');
+
+  res.send(keystore.toJSON());
+
+})
 
 https.createServer(options, app).listen(7443, () => {
   	console.log(`Started JWT service on port 7443`);
