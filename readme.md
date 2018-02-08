@@ -21,11 +21,17 @@ This approach has multiple advantages over "vanilla" mutual certificate authenti
 
 ## Purpose of the prototype
 
-This prototype is divided into two parts:
+This prototype is divided into three parts:
 - JWT minting service at which clients exchange the known Client Certificates
 for the JWT.
+- Service registry
 - The API Proxy at which the JWT is validated.
 
+## Nomenclature
+
+- Service - For the purpose of this prototype a Service describes either a client application or a server application. Services access other services provided the authorisation is granted. 
+
+- CA - Certificate Authority
 
 ## JWT microservice
 
@@ -35,6 +41,36 @@ issue service credentials (PKI certificates) so that they can be exchanged for
 JWT at a later stage.
 
 ### Microservice responsibilities:
-- issue JWT 
-- refresh JWT
-- Public Key registry
+- Issue JWT
+- Refresh JWT
+
+### PKI 
+
+JWT microservice requires client applications (services) to present their client certificate which is then validated against a table of known CAs. This microservice also signs any JWTs issued by it's private key. 
+
+For the prototype we will generate the root CA certificate, which can then be used to generate client and server certificates and provate key pairs:
+
+`$ mkdir pki`
+`$ mkdir pki/CA`
+
+`$ openssl req -new -x509 -days 265 -keyout ./pki/CA/ca.key -out ./pki/CA/ca.crt`
+
+Now for the client public/private key pair: 
+
+`$ openssl genrsa -out ./pki/client.key 2048` - generates client provate key
+`$ openssl req -new -key ./pki/client.key -out ./pki/client.csr` - generates client certificate signing request (CSR)
+`$ openssl x509 -req -in ./pki/client.csr -CA ./pki/CA/ca.crt -CAkey ./pki/CA/ca.key -CAcreateserial -out ./pki/client.crt -days 100 -sha256` - Generates public key signed by the CA's root certificate
+
+and Server public/private key pair: 
+
+`$ openssl genrsa -out ./pki/server.key 2048` - generates client provate key
+`$ openssl req -new -key ./pki/server.key -out ./pki/server.csr` - generates client certificate signing request (CSR)
+`$ openssl x509 -req -in ./pki/server.csr -CA ./pki/CA/ca.crt -CAkey ./pki/CA/ca.key -CAcreateserial -out ./pki/client.crt -days 100 -sha256` - Generates public key signed by the CA's root certificate
+
+
+## Service registry
+
+### Service registry responsibilities:
+- Service registry
+  - registering a new service (by certificate subject line)
+
