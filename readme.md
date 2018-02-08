@@ -38,3 +38,17 @@ JWT at a later stage.
 - issue JWT 
 - refresh JWT
 - Public Key registry
+
+### Reading material
+- https://www.youtube.com/watch?v=G7A6ftCbVQY (microXchg 2017 - Will Tran: Beyond OAuth2 – end to end microservice security)
+- https://www.youtube.com/watch?v=67mezK3NzpU (100% Stateless with JWT (JSON Web Token) by Hubert Sablonnière)
+- https://www.youtube.com/watch?v=dBdZrw2pPvc (Service to Service auth in a Microservices World)
+
+### Possible consideration
+- https://github.com/coreos/jwtproxy
+
+### TODOs
+- table of options considered
+- centralised vs decentralised on preferred candidate
+- how service and user link together for authentication
+- authorisation requirements
