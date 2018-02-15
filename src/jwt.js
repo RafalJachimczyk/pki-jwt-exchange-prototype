@@ -10,7 +10,7 @@ const serviceRepository = require('./repository/serviceRepository');
 
 const key = fs.readFileSync('./pki/server.key');
 const cert = fs.readFileSync('./pki/server.crt');
-const ca = fs.readFileSync('./pki/CA/ca.crt');
+const ca = fs.readFileSync('./pki/CA/ca_certs.pem');
 
 var keystore = jose.JWK.createKeyStore();
 keystore.add(cert, 'pem').

@@ -19,13 +19,14 @@ This approach has multiple advantages over "vanilla" mutual certificate authenti
   to the central infrastructure
 - JWTs are compatible with existing Access Proxy
 
-## Purpose of the prototype
+## Components of the prototype
 
 This prototype is divided into three parts:
 - JWT minting service at which clients exchange the known Client Certificates
 for the JWT.
 - Service registry
-- The API Proxy at which the JWT is validated.
+- Authorisation registry
+- The API Proxy at which client presenting it's JWT is authorised (or rather authorisation policies are retrieved and passed downstream).
 
 ## Nomenclature
 
@@ -47,9 +48,6 @@ JWT at a later stage.
 ### PKI 
 
 JWT microservice requires client applications (services) to present their client certificate which is then validated against a table of known CAs. This microservice also signs any JWTs issued by it's private key. 
-
-#### Note to myself
-We should be able to load multiple CA certs so that client certs generated from these are OK.
 
 For the prototype we will generate the root CA certificate, which can then be used to generate client and server certificates and private key pairs:
 
@@ -74,6 +72,27 @@ and Server public/private key pair:
 `$ openssl req -new -key ./pki/server.key -out ./pki/server.csr` - generates client certificate signing request (CSR)
 
 `$ openssl x509 -req -in ./pki/server.csr -CA ./pki/CA/ca.crt -CAkey ./pki/CA/ca.key -CAcreateserial -out ./pki/client.crt -days 100 -sha256` - Generates public key signed by the CA's root certificate
+
+#### Accepting certificates from third-party CAs
+
+JWT microservice is to be capable of accepting client certificates generated from a third party CAs so that we can extend
+number of organisations (i.e. external partners etc.) that we can issue JWTs for. 
+
+This can be done by appending more CA certs into single PEM file. 
+
+Alternative CA certs and Client cert/key pair to test this:
+
+`$ openssl req -new -x509 -days 265 -keyout ./pki/CA/ca_alternative.key -out ./pki/CA/ca_alternative.crt`
+
+`$ openssl genrsa -out ./pki/client_alternative.key 2048`
+
+`$ openssl req -new -key ./pki/client_alternative.key -out ./pki/client_alternative.csr`
+
+`$ openssl x509 -req -in ./pki/client_alternative.csr -CA ./pki/CA/ca_alternative.crt -CAkey ./pki/CA/ca_alternative.key -CAcreateserial -out ./pki/client_alternative.crt -days 100 -sha256` 
+
+`$ touch pki/CA/ca_certs.pem`
+
+`$ cat pki/CA/ca.crt pki/CA/ca_alternative.crt > pki/CA/ca_certs.pem`
 
 
 ## Service registry
