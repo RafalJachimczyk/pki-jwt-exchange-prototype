@@ -48,6 +48,9 @@ JWT at a later stage.
 
 JWT microservice requires client applications (services) to present their client certificate which is then validated against a table of known CAs. This microservice also signs any JWTs issued by it's private key. 
 
+#### Note to myself
+We should be able to load multiple CA certs so that client certs generated from these are OK.
+
 For the prototype we will generate the root CA certificate, which can then be used to generate client and server certificates and private key pairs:
 
 `$ mkdir pki`
@@ -78,6 +81,12 @@ and Server public/private key pair:
 ### Service registry responsibilities:
 - Service registry
   - registering a new service (by certificate subject line)
+  
+- Service authorisations
+  - service <-> service ABAC
+    - quota
+    - resource path access
+    - per environment setting of the above
 
 
 ## Reading material
