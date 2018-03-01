@@ -114,7 +114,7 @@ Alternative CA certs and Client cert/key pair to test this:
 - https://www.youtube.com/watch?v=67mezK3NzpU (100% Stateless with JWT (JSON Web Token) by Hubert Sablonnière)
 - https://www.youtube.com/watch?v=dBdZrw2pPvc (Service to Service auth in a Microservices World)
 
-## Problemn definition statement
+## Problem definition statement
 - TODO concise statement that references the above detail
 
 ## Options considered
