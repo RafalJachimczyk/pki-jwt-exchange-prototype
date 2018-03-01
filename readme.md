@@ -127,10 +127,13 @@ Alternative CA certs and Client cert/key pair to test this:
 
 ## Option analysis list of factors (rough form for now)
 - Industry direction
+- Maturity
 - Community support
 - Complexity
 - Dependencies
 - Support and maintainance considerations
+- Deployment considerations
+- Licensing considerations
 - To be continued
 
 ## Possible consideration
