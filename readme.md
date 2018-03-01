@@ -118,6 +118,7 @@ Alternative CA certs and Client cert/key pair to test this:
 - Continuation and extension of existing PKI infrastructure using mutual TLS
 - OAuth2 Client Credentials Grant i.e. use of client id and client secret
 - Serverside JWTs - utilising existing PKI infrastructure for identity purposes - https://stackoverflow.com/questions/30523238/best-practices-for-server-side-handling-of-jwt-tokens
+- Serverside JWTs - utilising issued client ids and asymmetric private keys (to review if this is different or extension of the options above e.g. for external partners)
 - Kerberos - not sure https://security.stackexchange.com/questions/72179/continued-use-of-kerberos
 - Anything else...?
 
