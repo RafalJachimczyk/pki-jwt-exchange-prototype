@@ -114,6 +114,9 @@ Alternative CA certs and Client cert/key pair to test this:
 - https://www.youtube.com/watch?v=67mezK3NzpU (100% Stateless with JWT (JSON Web Token) by Hubert Sablonnière)
 - https://www.youtube.com/watch?v=dBdZrw2pPvc (Service to Service auth in a Microservices World)
 
+## Problemn definition statement
+- TODO concise statement that references the above detail
+
 ## Options considered
 - Continuation and extension of existing PKI infrastructure using mutual TLS
 - OAuth2 Client Credentials Grant i.e. use of client id and client secret
@@ -121,6 +124,14 @@ Alternative CA certs and Client cert/key pair to test this:
 - Serverside JWTs - utilising issued client ids and asymmetric private keys (to review if this is different or extension of the options above e.g. for external partners)
 - Kerberos - not sure https://security.stackexchange.com/questions/72179/continued-use-of-kerberos
 - Anything else...?
+
+## Option analysis list of factors (rough form for now)
+- Industry direction
+- Community support
+- Complexity
+- Dependencies
+- Support and maintainance considerations
+- To be continued
 
 ## Possible consideration
 - https://github.com/coreos/jwtproxy
