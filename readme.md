@@ -115,7 +115,7 @@ Alternative CA certs and Client cert/key pair to test this:
 - https://www.youtube.com/watch?v=dBdZrw2pPvc (Service to Service auth in a Microservices World)
 
 ## Problem definition statement
-- TODO concise statement that references the above detail
+- TODO Provide secure authentication and authorisation for machine to machine communication
 
 ## Options considered
 - Continuation and extension of existing PKI infrastructure using mutual TLS
