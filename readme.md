@@ -114,6 +114,7 @@ Alternative CA certs and Client cert/key pair to test this:
 
 ## Reading material
 - https://www.datawire.io/guide/traffic/service-discovery-microservices/
+- https://medium.com/airbnb-engineering/smartstack-service-discovery-in-the-cloud-4b8a080de619
 - https://www.thoughtworks.com/radar/techniques/sidecars-for-endpoint-security
 - https://www.youtube.com/watch?v=G7A6ftCbVQY (microXchg 2017 - Will Tran: Beyond OAuth2 – end to end microservice security)
 - https://www.youtube.com/watch?v=67mezK3NzpU (100% Stateless with JWT (JSON Web Token) by Hubert Sablonnière)
