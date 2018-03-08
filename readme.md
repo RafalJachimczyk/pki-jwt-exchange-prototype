@@ -107,8 +107,13 @@ Alternative CA certs and Client cert/key pair to test this:
     - resource path access
     - per environment setting of the above
 
+### Examples of service registry / service discovery
+- https://github.com/lyft/discovery
+- https://github.com/Netflix/eureka/wiki/Eureka-at-a-glance
+- More to list....
 
 ## Reading material
+- https://www.datawire.io/guide/traffic/service-discovery-microservices/
 - https://www.thoughtworks.com/radar/techniques/sidecars-for-endpoint-security
 - https://www.youtube.com/watch?v=G7A6ftCbVQY (microXchg 2017 - Will Tran: Beyond OAuth2 – end to end microservice security)
 - https://www.youtube.com/watch?v=67mezK3NzpU (100% Stateless with JWT (JSON Web Token) by Hubert Sablonnière)
