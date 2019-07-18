@@ -71,7 +71,7 @@ and Server public/private key pair:
 
 `$ openssl req -new -key ./pki/server.key -out ./pki/server.csr` - generates client certificate signing request (CSR)
 
-`$ openssl x509 -req -in ./pki/server.csr -CA ./pki/CA/ca.crt -CAkey ./pki/CA/ca.key -CAcreateserial -out ./pki/client.crt -days 100 -sha256` - Generates public key signed by the CA's root certificate
+`$ openssl x509 -req -in ./pki/server.csr -CA ./pki/CA/ca.crt -CAkey ./pki/CA/ca.key -CAcreateserial -out ./pki/server.crt -days 100 -sha256` - Generates public key signed by the CA's root certificate
 
 #### Accepting certificates from third-party CAs
 
